@@ -1,0 +1,78 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>details</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <model-viewer style="background-color:{{colorCh}};" [src]="obj_link" alt="A 3D model of an astronaut" ar ar-modes="webxr scene-viewer quick-look" environment-image="neutral" auto-rotate camera-controls>
+
+        <button><a href="https://arvr.google.com/scene-viewer/1.0?file=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">AR open </a> </button>
+    </model-viewer>
+
+    <div class="slides ion-margin-bottom">
+        <ion-slides class="sl" [options]="slidesOptions">
+            <ion-slide class="sl__item" *ngFor="let item of data">
+                <ion-card class="sl__card" (click)="test(item)">
+                    <div class="main">
+                        <img src="assets/{{item.tip_icon}}">
+                    </div>
+                </ion-card>
+            </ion-slide>
+
+        </ion-slides>
+    </div>
+
+
+    <ion-card class="card_name">
+        <ion-card-header>
+            <div class="header">
+                <div class="header__title">
+                    <ion-card-title>{{nameCh}}</ion-card-title>
+                    <ion-card-subtitle>2000 TL</ion-card-subtitle>
+                </div>
+                <div class="header__price">
+                    <ion-icon name="heart-outline" size="large"></ion-icon>
+                </div>
+            </div>
+
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle>Açıklama</ion-card-subtitle>
+
+        </ion-card-header>
+        <ion-card-content>
+            Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+    </ion-card>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="dark">
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+
+            <ion-fab-button color="light" href="https://api.whatsapp.com/send?phone=+905523371080">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+            </ion-fab-button>
+
+
+            <ion-fab-button color="light" href="tel:+905523371080">
+                <ion-icon name="call-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" href="https://myktybekomur.github.io/arweb/">
+                <ion-icon name="logo-google"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" href="https://www.instagram.com/omurbekov_mm?r=nametag">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+</ion-content>

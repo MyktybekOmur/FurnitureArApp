@@ -1,0 +1,90 @@
+model-viewer {
+    width: 100%;
+    height: 70vh;
+}
+
+.slides {
+    height: 15vh;
+    border-radius: 0 0 28px 28px;
+}
+
+.sl {
+    width: 90%;
+    position: relative;
+    margin: 0px auto;
+}
+
+.sl__item {
+    width: 100px !important;
+    margin: 0px auto;
+}
+
+.sl__card {
+    height: 100%;
+    width: 100px;
+    box-shadow: none;
+    border-radius: 30px;
+    margin: 0px 0px;
+    background: rgba(255, 255, 255, .8);
+    .main {
+        height: 100px;
+        width: 100px;
+        background: #FFFFFF;
+        box-shadow: 7px 7px 20px #dbdfe2, -7px -7px 20px #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.card_name {
+    border-radius: 20px;
+    ion-card-subtitle {
+        font-size: 18px;
+        margin: 5px;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__price {
+    padding: auto;
+    text-align: center;
+    justify-content: center;
+}
+
+#ar-button {
+    background-image: url(https://modelviewer.dev/assets/ic_view_in_ar_new_googblue_48dp.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 50px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color: #4285f4;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #DADCE0;
+}
+
+#ar-button:active {
+    background-color: #E8EAED;
+}
+
+#ar-button:focus {
+    outline: none;
+}
+
+#ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+}

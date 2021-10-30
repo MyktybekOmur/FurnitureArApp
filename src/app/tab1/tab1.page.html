@@ -1,17 +1,88 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!--Header-->
+    <div class="header">
+        <h1><strong>Best Furniture</strong><br><strong>For Your House</strong> </h1>
+        <div class="header__search">
+            <div class="search">
+                <ion-searchbar class="search__input"></ion-searchbar>
+            </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+        </div>
+    </div>
+    <!--Navigation-->
+    <div class="slides ion-margin-bottom">
+        <ion-slides class="sl" [options]="slidesOptions">
+            <ion-slide class="sl__item">
+                <ion-card class="sl__card {{classCh[0]}}" (click)="changeCategory(0,'room')">
+                    <ion-icon name="bed-sharp" size="large"></ion-icon>
+                    <h2>Koltuk takimi</h2>
+                </ion-card>
+            </ion-slide>
+            <ion-slide class="sl__item">
+                <ion-card class="sl__card  {{classCh[1]}}" (click)="changeCategory(1,'kose')">
+                    <ion-icon name="bed-sharp" size="large"></ion-icon>
+                    <h2>Kose Takimi</h2>
+                </ion-card>
+            </ion-slide>
+            <ion-slide class="sl__item">
+                <ion-card class="sl__card  {{classCh[2]}}" (click)="changeCategory(2,'kitchen')">
+                    <ion-icon name="bed-sharp" size="large"></ion-icon>
+                    <h2>Yatak Odasi</h2>
+                </ion-card>
+            </ion-slide>
+            <ion-slide class="sl__item">
+                <ion-card class="sl__card  {{classCh[3]}}" (click)="changeCategory(3,'kitchen')">
+                    <ion-icon name="bed-sharp" size="large"></ion-icon>
+                    <h2>Yemek Odasi</h2>
+                </ion-card>
+            </ion-slide>
+            <ion-slide class="sl__item">
+                <ion-card class="sl__card  {{classCh[4]}}" (click)="changeCategory(4,'child')">
+                    <ion-icon name="bed-sharp" size="large"></ion-icon>
+                    <h2>Cocuk odasi</h2>
+                </ion-card>
+            </ion-slide>
+
+        </ion-slides>
+    </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of items">
+
+                <ion-card *ngIf="item.category == categoryCh">
+                    <img src="assets/{{item.icon}}" />
+
+
+                    <ion-card-subtitle (click)="onClick(item.tip)">{{item.name}}</ion-card-subtitle>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="dark">
+
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+
+            <ion-fab-button color="light" href="https://api.whatsapp.com/send?phone=+905523371080">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+            </ion-fab-button>
+
+
+            <ion-fab-button color="light" href="tel:+905523371080 ">
+                <ion-icon name="call-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" href="https://myktybekomur.github.io/arweb/">
+                <ion-icon name="logo-google"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" href="https://www.instagram.com/omurbekov_mm?r=nametag">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
 </ion-content>
