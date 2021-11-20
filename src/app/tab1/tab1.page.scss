@@ -44,15 +44,18 @@ ion-searchbar {
 
 .sl__card {
     margin-top: 10px;
-    width: 80%;
     height: 40px;
     display: flex;
     border-radius: 15px;
     margin-left: 0px;
-    justify-content: space-between;
+    justify-content: start;
+    text-align: center;
     h2 {
-        font-size: 20px;
-        margin: 7px 15px 7px 0px;
+        font-size: 16px;
+        margin: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
     }
     ion-icon {
         margin: 5px;

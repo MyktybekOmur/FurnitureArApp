@@ -4,7 +4,7 @@
         <h1><strong>Best Furniture</strong><br><strong>For Your House</strong> </h1>
         <div class="header__search">
             <div class="search">
-                <ion-searchbar class="search__input"></ion-searchbar>
+                <ion-searchbar [(ngModel)]="searchKey" (ionChange)="search()" class="search__input"></ion-searchbar>
             </div>
 
         </div>
@@ -13,31 +13,37 @@
     <div class="slides ion-margin-bottom">
         <ion-slides class="sl" [options]="slidesOptions">
             <ion-slide class="sl__item">
-                <ion-card class="sl__card {{classCh[0]}}" (click)="changeCategory(0,'room')">
+                <ion-card class="sl__card {{classCh[0]}}" (click)="changeCategory(0,'')">
+                    <ion-icon name="bed-sharp" size="large"></ion-icon>
+                    <h2>Hepsi</h2>
+                </ion-card>
+            </ion-slide>
+            <ion-slide class="sl__item">
+                <ion-card class="sl__card {{classCh[1]}}" (click)="changeCategory(1,'room')">
                     <ion-icon name="bed-sharp" size="large"></ion-icon>
                     <h2>Koltuk takimi</h2>
                 </ion-card>
             </ion-slide>
             <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[1]}}" (click)="changeCategory(1,'kose')">
+                <ion-card class="sl__card  {{classCh[2]}}" (click)="changeCategory(2,'kose')">
                     <ion-icon name="bed-sharp" size="large"></ion-icon>
                     <h2>Kose Takimi</h2>
                 </ion-card>
             </ion-slide>
             <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[2]}}" (click)="changeCategory(2,'kitchen')">
+                <ion-card class="sl__card  {{classCh[3]}}" (click)="changeCategory(3,'kitchen')">
                     <ion-icon name="bed-sharp" size="large"></ion-icon>
                     <h2>Yatak Odasi</h2>
                 </ion-card>
             </ion-slide>
             <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[3]}}" (click)="changeCategory(3,'kitchen')">
+                <ion-card class="sl__card  {{classCh[4]}}" (click)="changeCategory(4,'kitchen')">
                     <ion-icon name="bed-sharp" size="large"></ion-icon>
                     <h2>Yemek Odasi</h2>
                 </ion-card>
             </ion-slide>
             <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[4]}}" (click)="changeCategory(4,'child')">
+                <ion-card class="sl__card  {{classCh[5]}}" (click)="changeCategory(5,'child')">
                     <ion-icon name="bed-sharp" size="large"></ion-icon>
                     <h2>Cocuk odasi</h2>
                 </ion-card>
@@ -46,13 +52,27 @@
         </ion-slides>
     </div>
     <ion-grid>
-        <ion-row>
+        <ion-row *ngIf="!searchKey">
             <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of items">
-
                 <ion-card *ngIf="item.category === categoryCh">
                     <img src="assets/{{item.icon}}" />
-
-
+                    <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
+                </ion-card>
+                <ion-card *ngIf="!categoryCh">
+                    <img src="assets/{{item.icon}}" />
+                    <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <!--search results-->
+        <ion-row *ngIf="searchKey">
+            <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of res">
+                <ion-card *ngIf="item.category === categoryCh">
+                    <img src="assets/{{item.icon}}" />
+                    <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
+                </ion-card>
+                <ion-card *ngIf="!categoryCh">
+                    <img src="assets/{{item.icon}}" />
                     <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
                 </ion-card>
             </ion-col>

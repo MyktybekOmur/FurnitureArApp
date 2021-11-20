@@ -13,8 +13,10 @@ export class Tab1Page {
   public temp3d: any;
   public classCh: any = [];
   public categoryCh: string;
+  searchKey = '';
+  res = [];
   slidesOptions = {
-    slidesPerView: 1.5,
+    slidesPerView: 2,
   };
 
   constructor(public router: Router, private http: HttpClient) {
@@ -119,7 +121,7 @@ export class Tab1Page {
       },
     ];
     this.classCh[0] = 'active';
-    this.categoryCh = 'room';
+    this.categoryCh = '';
   }
   onClick(item) {
     this.router.navigate(['detail', JSON.stringify(item)]);
@@ -127,9 +129,9 @@ export class Tab1Page {
   logout() {
     this.router.navigate(['menu']);
   }
-
+  // chanhe category tap
   changeCategory(item, category) {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       if (i === item) {
         this.classCh[i] = 'active';
         continue;
@@ -137,5 +139,14 @@ export class Tab1Page {
       this.classCh[i] = '';
     }
     this.categoryCh = category;
+  }
+  //search
+  search() {
+    this.classCh[0] = 'active';
+    this.res = this.items.filter((item) => {
+      if (item.name.includes(this.searchKey)) {
+        return item;
+      }
+    });
   }
 }
