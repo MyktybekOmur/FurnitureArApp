@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-tab1',
@@ -19,7 +20,11 @@ export class Tab1Page {
     slidesPerView: 2,
   };
 
-  constructor(public router: Router, private http: HttpClient) {
+  constructor(
+    public router: Router,
+    private http: HttpClient,
+    private localdata: StorageService
+  ) {
     this.items = [
       {
         id: 0,
@@ -148,5 +153,10 @@ export class Tab1Page {
         return item;
       }
     });
+  }
+  //add local data
+  async addItem(item) {
+    await this.localdata.addData(item);
+    this.localdata.presentToast('Başarılı eklendi!', 'success');
   }
 }

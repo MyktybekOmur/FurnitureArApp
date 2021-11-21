@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -10,7 +10,11 @@ import { StorageService } from '../services/storage.service';
 })
 export class Tab3Page {
   public items: any = [];
-  constructor(private localdata: StorageService, private router: Router) {
+  constructor(
+    private localdata: StorageService,
+    private router: Router,
+    public alertController: AlertController
+  ) {
     this.getDate();
   }
   ionViewWillEnter() {
@@ -33,5 +37,31 @@ export class Tab3Page {
   //open details
   onClick(item) {
     this.router.navigate(['detail', JSON.stringify(item)]);
+  }
+
+  async confirm(id) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Onay!',
+      message: 'Silmek ister misiniz!!!',
+      buttons: [
+        {
+          text: 'iptal',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'sil',
+          handler: () => {
+            this.removeItem(id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }

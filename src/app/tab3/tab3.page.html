@@ -1,4 +1,4 @@
-<ion-header [translucent]="true" class="no-ion-bar">
+<ion-header [translucent]="true" class="ion-no-border">
     <ion-toolbar>
         <ion-title>
             Favorilerim
@@ -22,7 +22,7 @@
                 </ion-item>
                 <ion-item-options side="end">
                     <ion-item-option color="dark">
-                        <ion-icon (click)="removeItem(item.id)" name="trash"></ion-icon>
+                        <ion-icon (click)="confirm(item.id)" name="trash"></ion-icon>
                     </ion-item-option>
                 </ion-item-options>
             </ion-card>
@@ -37,4 +37,28 @@
 
         </div>
     </div>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="dark">
+
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+
+            <ion-fab-button color="light" href="https://api.whatsapp.com/send?phone=+905523371080">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+            </ion-fab-button>
+
+
+            <ion-fab-button color="light" href="tel:+905523371080 ">
+                <ion-icon name="call-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" href="https://myktybekomur.github.io/arweb/">
+                <ion-icon name="logo-google"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" href="https://www.instagram.com/omurbekov_mm?r=nametag">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
 </ion-content>

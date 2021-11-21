@@ -54,13 +54,26 @@
     <ion-grid>
         <ion-row *ngIf="!searchKey">
             <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of items">
-                <ion-card *ngIf="item.category === categoryCh">
+                <ion-card (click)="onClick(item)" *ngIf="item.category === categoryCh">
                     <img src="assets/{{item.icon}}" />
-                    <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+                    <div class="subtitle">
+                        <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+                        <ion-text>
+                            5000 TL
+                        </ion-text>
+                    </div>
                 </ion-card>
-                <ion-card *ngIf="!categoryCh">
+                <ion-card (click)="onClick(item)" *ngIf="!categoryCh">
                     <img src="assets/{{item.icon}}" />
-                    <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+                    <div class="subtitle">
+                        <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+                        <ion-text>
+                            5000 TL
+                        </ion-text>
+                    </div>
+
                 </ion-card>
             </ion-col>
         </ion-row>
