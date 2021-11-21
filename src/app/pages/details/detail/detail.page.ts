@@ -14,6 +14,7 @@ export class DetailPage implements OnInit {
   public obj_link: string;
   public nameCh: string;
   public colorCh: any;
+  public checkF = false;
   //npm install @ionic-native/core
   slidesOptions = {
     slidesPerView: 1.5,
@@ -30,8 +31,7 @@ export class DetailPage implements OnInit {
     this.obj_link = this.data.tip[0].tip_link;
     this.nameCh = this.data.tip[0].tip_name;
     this.colorCh = this.data.tip[0].tip_color;
-    console.log(this.obj_link);
-    console.log(this.obj_link);
+    this.checkFavorit();
   }
 
   test(item) {
@@ -43,9 +43,25 @@ export class DetailPage implements OnInit {
   async addItem() {
     await this.localdata.addData(this.data);
     this.localdata.presentToast('Başarılı eklendi!', 'success');
+    this.checkFavorit();
+  }
+  //remove fovorit
+  removeItem(id) {
+    this.localdata.removeData(id);
+    this.localdata.presentToast('Başarılı silindi!', 'success');
+    setTimeout(() => {
+      this.checkFavorit();
+    }, 200);
   }
   async getUser() {
     const data = await this.localdata.getData();
-    console.log(data);
+  }
+  async checkFavorit() {
+    const res = await this.localdata.check(this.data.id);
+    if (res.length !== 0) {
+      this.checkF = true;
+    } else {
+      this.checkF = false;
+    }
   }
 }

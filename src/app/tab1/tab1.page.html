@@ -80,15 +80,19 @@
         <!--search results-->
         <ion-row *ngIf="searchKey">
             <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of res">
-                <ion-card *ngIf="item.category === categoryCh">
+                <ion-card>
                     <img src="assets/{{item.icon}}" />
                     <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
                 </ion-card>
-                <ion-card *ngIf="!categoryCh">
-                    <img src="assets/{{item.icon}}" />
-                    <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
-                </ion-card>
+
             </ion-col>
+            <div class="no_results" *ngIf="res.length===0">
+                <div>
+                    <ion-icon name="receipt"></ion-icon>
+                    <h3>Boş</h3>
+
+                </div>
+            </div>
         </ion-row>
     </ion-grid>
 

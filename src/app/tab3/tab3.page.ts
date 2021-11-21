@@ -24,7 +24,6 @@ export class Tab3Page {
   //get items
   async getDate() {
     this.items = await this.localdata.getData();
-    console.log(this.items);
   }
   //remove
   removeItem(id) {
@@ -49,9 +48,7 @@ export class Tab3Page {
           text: 'iptal',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          },
+          handler: (blah) => {},
         },
         {
           text: 'sil',

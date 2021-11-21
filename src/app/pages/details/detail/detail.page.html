@@ -37,7 +37,8 @@
                     <ion-card-subtitle>2000 TL</ion-card-subtitle>
                 </div>
                 <div class="header__price">
-                    <ion-icon (click)="addItem()" name="heart-outline" size="large"></ion-icon>
+                    <ion-icon *ngIf="!checkF" (click)="addItem()" name="heart-outline" size="large"></ion-icon>
+                    <ion-icon *ngIf="checkF" (click)="removeItem(data.id)" name="heart" size="large"></ion-icon>
                 </div>
             </div>
 
