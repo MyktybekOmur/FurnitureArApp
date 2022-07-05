@@ -18,59 +18,36 @@
                     <h2>Hepsi</h2>
                 </ion-card>
             </ion-slide>
-            <ion-slide class="sl__item">
-                <ion-card class="sl__card {{classCh[1]}}" (click)="changeCategory(1,'room')">
+            <ion-slide class="sl__item" *ngFor="let item of cats;let i=index">
+                <ion-card class="sl__card {{classCh[i+1]}}" (click)="changeCategory(i+1,item?.name)">
                     <ion-icon name="bed-sharp" size="large"></ion-icon>
-                    <h2>Koltuk takimi</h2>
+                    <h2>{{item?.name}}</h2>
                 </ion-card>
             </ion-slide>
-            <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[2]}}" (click)="changeCategory(2,'kose')">
-                    <ion-icon name="bed-sharp" size="large"></ion-icon>
-                    <h2>Kose Takimi</h2>
-                </ion-card>
-            </ion-slide>
-            <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[3]}}" (click)="changeCategory(3,'kitchen')">
-                    <ion-icon name="bed-sharp" size="large"></ion-icon>
-                    <h2>Yatak Odasi</h2>
-                </ion-card>
-            </ion-slide>
-            <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[4]}}" (click)="changeCategory(4,'kitchen')">
-                    <ion-icon name="bed-sharp" size="large"></ion-icon>
-                    <h2>Yemek Odasi</h2>
-                </ion-card>
-            </ion-slide>
-            <ion-slide class="sl__item">
-                <ion-card class="sl__card  {{classCh[5]}}" (click)="changeCategory(5,'child')">
-                    <ion-icon name="bed-sharp" size="large"></ion-icon>
-                    <h2>Cocuk odasi</h2>
-                </ion-card>
-            </ion-slide>
+
 
         </ion-slides>
     </div>
     <ion-grid>
         <ion-row *ngIf="!searchKey">
-            <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of items">
+            <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of prds">
                 <ion-card (click)="onClick(item)" *ngIf="item.category === categoryCh">
-                    <img src="assets/{{item.icon}}" />
-                    <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+                    <img  src="{{item?.imageUrl?item?.imageUrl:'assets/img/products/prd_01.jpeg'}}" />
+                    <ion-card-subtitle>{{item?.name}}</ion-card-subtitle>
                     <div class="subtitle">
-                        <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+                        <ion-card-subtitle>{{item?.content}}</ion-card-subtitle>
                         <ion-text>
-                            5000 TL
+                            {{item.price}} TL
                         </ion-text>
                     </div>
                 </ion-card>
                 <ion-card (click)="onClick(item)" *ngIf="!categoryCh">
-                    <img src="assets/{{item.icon}}" />
+                    <img  src="{{item?.imageUrl?item?.imageUrl:'assets/img/products/prd_01.jpeg'}}" />
                     <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
                     <div class="subtitle">
                         <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
                         <ion-text>
-                            5000 TL
+                            {{item?.price}} TL
                         </ion-text>
                     </div>
 
@@ -81,7 +58,7 @@
         <ion-row *ngIf="searchKey">
             <ion-col size="6" sizeXs="6" sizeSm="6" [sizeMd]="4" [sizeLg]="3" *ngFor="let item of res">
                 <ion-card>
-                    <img src="assets/{{item.icon}}" />
+                    <img src="{{item?.imageUrl?item?.imageUrl:'assets/img/products/prd_01.jpeg'}}" />
                     <ion-card-subtitle (click)="onClick(item)">{{item.name}}</ion-card-subtitle>
                 </ion-card>
 

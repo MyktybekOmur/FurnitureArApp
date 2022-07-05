@@ -27,10 +27,10 @@ export class DetailPage implements OnInit {
 
   ngOnInit() {
     this.data = JSON.parse(this.activatedRoute.snapshot.paramMap.get('data'));
-
-    this.obj_link = this.data.tip[0].tip_link;
-    this.nameCh = this.data.tip[0].tip_name;
-    this.colorCh = this.data.tip[0].tip_color;
+    console.log(this.data);
+    this.obj_link = this.data.objLink;
+    this.nameCh = this.data.name;
+    this.colorCh = this.data.color;
     this.checkFavorit();
   }
 

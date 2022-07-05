@@ -15,26 +15,12 @@
         <a id="ar-button" href="https://arvr.google.com/scene-viewer/1.0?file={{obj_link}}&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"></a>;
     </model-viewer>
 
-    <div class="slides ion-margin-bottom">
-        <ion-slides class="sl" [options]="slidesOptions">
-            <ion-slide class="sl__item" *ngFor="let item of data.tip">
-                <ion-card class="sl__card" (click)="test(item)">
-                    <div class="main">
-                        <img src="assets/{{item.tip_icon}}">
-                    </div>
-                </ion-card>
-            </ion-slide>
-
-        </ion-slides>
-    </div>
-
-
     <ion-card class="card_name">
         <ion-card-header>
             <div class="header">
                 <div class="header__title">
                     <ion-card-title>{{nameCh}}</ion-card-title>
-                    <ion-card-subtitle>2000 TL</ion-card-subtitle>
+                    <ion-card-subtitle>{{data.price}} TL</ion-card-subtitle>
                 </div>
                 <div class="header__price">
                     <ion-icon *ngIf="!checkF" (click)="addItem()" name="heart-outline" size="large"></ion-icon>
@@ -51,7 +37,7 @@
 
         </ion-card-header>
         <ion-card-content>
-            Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+         {{data.conten}}
         </ion-card-content>
     </ion-card>
 

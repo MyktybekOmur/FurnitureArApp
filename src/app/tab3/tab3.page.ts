@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
+import { CategoryService } from '../services/category/category.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -13,12 +14,13 @@ export class Tab3Page {
   constructor(
     private localdata: StorageService,
     private router: Router,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private catApi: CategoryService
   ) {
     this.getDate();
   }
   ionViewWillEnter() {
-    this.getDate();
+    this.getDate();this.getCategories();
   }
 
   //get items
@@ -60,5 +62,11 @@ export class Tab3Page {
     });
 
     await alert.present();
+  }
+  getCategories(){
+    this.catApi.getCategries().subscribe(res=>{
+  
+      console.log(res)
+    })
   }
 }
